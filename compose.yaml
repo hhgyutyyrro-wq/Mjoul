@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  agent: # اسم الخدمة
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      # متغير البيئة الذي سيتم تعيينه في Defang Secrets
+      GEMINI_API_KEY: ${GEMINI_API_KEY} 
+    # الأمر الجديد لتشغيل FastAPI
+    command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
